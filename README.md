@@ -11,8 +11,11 @@
 ## Tecnologias usadas
 
 - HTML
+
 - CSS
-- Django
+
+- Django (Python)
+
 - Bootstrap
 
 ![alt text](https://github.com/helsonmatos/django-agenda/blob/main/imagens/agenda%2001%20inicio.png)
