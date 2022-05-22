@@ -9,6 +9,7 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'nome', 'sobrenome')
     list_filter = ['nome','sobrenome']
     list_per_page = 10
+    search_fields = ['nome','sobrenome','telefone']
 
 
 admin.site.register(Categoria)
