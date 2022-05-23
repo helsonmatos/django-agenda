@@ -5,11 +5,11 @@ from django.core.paginator import Paginator
 # Create your views here.
 def index(request):
     contatos = Contato.objects.all()
-    paginator = Paginator(contatos,20)
+    paginator = Paginator(contatos,5)
 
     page = request.GET.get('p')
     contatos = paginator.get_page(page)
-    
+
     return render(request, 'contatos/index.html',{
         'contatos': contatos
     })
