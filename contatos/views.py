@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Contato
 from django.http import Http404
 from django.core.paginator import Paginator
@@ -25,6 +26,7 @@ def detalhes(request,contato_id):
 
     if not contato.mostrar:
         raise Http404()
+    
     return render(request, 'contatos/detalhes.html',{
         'contato': contato
     })
@@ -33,7 +35,12 @@ def busca(request):
     termo = request.GET.get('termo')
 
     if termo is None or not termo:
-        raise Http404()
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'Campo termo não pode ficar vazio'
+        )
+        return redirect('index')
 
     campos = Concat('nome', Value(' '), 'sobrenome')
 
